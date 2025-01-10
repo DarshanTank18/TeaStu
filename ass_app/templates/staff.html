@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeaStu</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+
+        /* Container */
+        .team-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        /* Team Card */
+        .team-card {
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            text-align: center;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .team-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-bottom-left-radius: 50% 20px;
+            border-bottom-right-radius: 50% 20px;
+        }
+
+        .team-card .content {
+            padding: 20px;
+        }
+
+        .team-card h3 {
+            margin: 10px 0;
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .team-card p {
+            color: #777;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        /* Social Icons */
+        .social-icons a {
+            color: #0066ff;
+            margin: 0 8px;
+            text-decoration: none;
+            font-size: 1.3rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    {% extends 'header.html' %}
+    {% block body %}
+    <!-- Title -->
+    <h2>Meet the <span>stuff</span></h2>
+
+    <!-- Team Cards Container -->
+    <div class="team-container">
+        <!-- Card 1 -->
+        <div class="team-card">
+            <img src="https://t4.ftcdn.net/jpg/06/40/07/03/360_F_640070383_9LJ3eTRSvOiwKyrmBYgcjhSlckDnNcxl.jpg" alt="Maria Smith">
+            <div class="content">
+                <h3>Maria Smith</h3>
+                <p>Frontend Developer</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-github"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="team-card">
+            <img src="https://img.freepik.com/free-photo/happy-young-woman-standing-outdoors_329181-10484.jpg" alt="Darren Johnson">
+            <div class="content">
+                <h3>Darren Johnson</h3>
+                <p>Marketing Specialist</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="team-card">
+            <img src="https://st3.depositphotos.com/16122460/18966/i/450/depositphotos_189668580-stock-photo-young-male-teacher-with-book.jpg" alt="Chris Taylor">
+            <div class="content">
+                <h3>Chris Taylor</h3>
+                <p>Web Designer</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-dribbble"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="team-card">
+            <img src="https://as2.ftcdn.net/v2/jpg/01/97/28/03/1000_F_197280335_EnKA1A5tJKci6o1FB5fvtWpMxH7QBOwG.jpg" alt="Chris Taylor">
+            <div class="content">
+                <h3>Chris Taylor</h3>
+                <p>Web Designer</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-dribbble"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="team-card">
+            <img src="https://imgs.search.brave.com/yUAKn7QCA3954FWRFqzzHsoQNgdhD64aq0MV0gwbRRA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/cHJlbWl1bS1waG90/by9oYW5kc29tZS15/b3VuZy1tYWxlLXN0/dWRlbnQtdGVhY2hl/ci1zdGFuZGluZy1y/ZWxheGluZy1hZ2Fp/bnN0LWdyZWVuLWJs/YWNrYm9hcmRfMTYw/MzYwLTE2NzMuanBn/P3NlbXQ9YWlzX2h5/YnJpZA" alt="Chris Taylor">
+            <div class="content">
+                <h3>Chris Taylor</h3>
+                <p>Web Designer</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-dribbble"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="team-card">
+            <img src="https://imgs.search.brave.com/2NPjbkXog6qmd30MTHb7JR5iJF8zATdHp8AQgojJUAg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/cHJlbWl1bS1waG90/by9tYWxlLXRlYWNo/ZXItZnJvbnQtYmxh/Y2tib2FyZC1jbGFz/c3Jvb20tc21pbGlu/Zy13YXJtbHlfMjMw/MTE1LTE0ODAxLmpw/Zz9zZW10PWFpc19o/eWJyaWQ" alt="Chris Taylor">
+            <div class="content">
+                <h3>Chris Taylor</h3>
+                <p>Web Designer</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-dribbble"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="team-card">
+            <img src="https://img.freepik.com/free-photo/thinking-points-up-young-female-teacher-wearing-glasses-standing-front-blackboard-classroom_141793-136947.jpg?t=st=1734416929~exp=1734420529~hmac=83bacc6a19a5569955e50ec6010a3db224d697688e0799ecf1d4463e6db15094&w=1060" alt="Chris Taylor">
+            <div class="content">
+                <h3>Chris Taylor</h3>
+                <p>Web Designer</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-dribbble"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 8 -->
+        <div class="team-card">
+            <img src="https://t4.ftcdn.net/jpg/04/26/09/83/360_F_426098370_vtmsQLYKUeSpcxDZbQHOWAyi8be4H2U3.jpg" alt="Chris Taylor">
+            <div class="content">
+                <h3>Chris Taylor</h3>
+                <p>Web Designer</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-dribbble"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+
+</html>

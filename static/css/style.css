@@ -1,0 +1,40 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.card {
+    background-color: #fff;
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.badge {
+    font-size: 0.9rem;
+    padding: 0.3rem 0.6rem;
+}
+
+footer {
+    margin-top: 40px;
+}
+
+.list-group-item.active {
+    background-color: #d9005f;
+    border-color: #d9005f;
+}
+
+.list-group-item-action {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar-text a {
+    font-size: 1rem;
+}
+.row .col-md-6 {
+    background-image: url(//hire4event.com/blogs/wp-content/uploads/2019/02/hire4event.com_-1.jpg);
+}

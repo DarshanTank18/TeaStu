@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeaStu</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .form-label {
+            color: black;
+        }
+
+        .card {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .form-control {
+            border-radius: 5px;
+        }
+
+        .alert {
+            padding: 20px;
+            background-color: lightblue;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .closebtn {
+            margin-left: 15px;
+            color: white;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .closebtn:hover {
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card p-4">
+                    <h2 class="text-center mb-4 text-custom">Event Registration</h2>
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <!-- Flash Message -->
+                        {% if msg %}
+                        <div class="alert">
+                            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                            {{msg}}
+                        </div>
+                        {% endif %}
+                        <!-- Form Fields -->
+                        <div class="mb-3">
+                            <label for="eventName" class="form-label">Book Name</label>
+                            <input type="text" class="form-control" id="eventName" name="B_name" placeholder="Enter book name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="eventName" class="form-label">Book Author Name</label>
+                            <input type="text" class="form-control" id="eventName" name="B_author" placeholder="Enter book author name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="eventImage" class="form-label">Upload Event Image</label>
+                            <input type="file" class="form-control" id="eventImage" name="B_image" accept="image/*" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Add Book</button>
+                        <div class="text-center mt-3">
+                            <p><a href="/library" class="text-custom">Back to library</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

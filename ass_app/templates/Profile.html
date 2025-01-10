@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <style>
+        .profile-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin-top: 75px;
+        }
+
+        .profile-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .profile-header {
+            position: relative;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 4px solid #0066ff;
+        }
+
+        #editProfileBtn {
+            padding: 10px 20px;
+            margin-top: 15px;
+            background-color: #0066ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+
+        #editProfileBtn:hover {
+            background-color: #0055cc;
+        }
+
+        .profile-details {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .profile-details h3 {
+            margin-bottom: 10px;
+        }
+
+        .profile-details p {
+            margin: 5px 0;
+            color: #555;
+        }
+
+        #deleteProfile {
+            padding: 10px 20px;
+            margin-top: 15px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #deleteProfile:hover {
+            background-color: rgba(255, 0, 0, 0.8);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            margin: 15% auto;
+            border-radius: 8px;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .modal-button {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .modal-button.cancel {
+            background-color: #ccc;
+        }
+
+        .modal-button.cancel:hover {
+            background-color: #bbb;
+        }
+
+        .modal-button.confirm {
+            background-color: red;
+            color: white;
+        }
+
+        .modal-button.confirm:hover {
+            background-color: rgba(255, 0, 0, 0.8);
+        }
+    </style>
+</head>
+
+<body>
+    {% extends 'header.html' %}
+    {% block body %}
+    <div class="profile-container">
+        <div class="profile-card">
+            <div class="profile-header">
+                <!-- Dynamic Profile Image -->
+                <img src="https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg"
+                    alt="Profile Picture" class="profile-img" id="profileImg">
+                <h1 id="userName">{{ data.fnm }}</h1>
+                <a href="/edit_user" id="editProfileBtn" aria-label="Edit Profile">Edit Profile</a>
+                <button id="deleteProfile" aria-label="Delete Profile">Delete Profile</button>
+
+            </div>
+            <div class="profile-details">
+                <h3>Details</h3>
+                <p><strong>Email:</strong> {{ data.email }}</p>
+                <p><strong>Date of Birth:</strong> {{ data.dob }}</p>
+                <p><strong>Date of Join:</strong> {{ data.doj }}</p>
+                <p><strong>Role:</strong> {{ data.userType }}</p>
+
+                {% if i.userType == "teacher" %}
+                <p><strong>Compensation:</strong> {{ data.compensation }}</p>
+                {% elif i.userType == "student" %}
+                <p><strong>Roll Number:</strong> {{ data.rollNumber }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Delete Confirmation -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <h3>Are you sure you want to delete your profile?</h3>
+            <button class="modal-button cancel" id="cancelDelete">Cancel</button>
+            <button class="modal-button confirm" id="confirmDelete">Yes, Delete</button>
+        </div>
+    </div>
+
+    <script>
+        // Show the confirmation modal when delete button is clicked
+        document.getElementById("deleteProfile").addEventListener("click", function () {
+            document.getElementById("deleteModal").style.display = "block";
+        });
+
+        // Close the modal if the user clicks "Cancel"
+        document.getElementById("cancelDelete").addEventListener("click", function () {
+            document.getElementById("deleteModal").style.display = "none";
+        });
+
+        // Delete the profile if the user confirms
+        document.getElementById("confirmDelete").addEventListener("click", function () {
+            window.location.href = "/delete_acc/{{i.id}}";  // Redirect to the delete route
+        });
+
+        // Close modal if user clicks outside of it
+        window.onclick = function (event) {
+            if (event.target === document.getElementById("deleteModal")) {
+                document.getElementById("deleteModal").style.display = "none";
+            }
+        };
+    </script>
+    {% endblock %}
+</body>
+
+</html>

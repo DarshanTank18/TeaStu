@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeaStu</title>
+    <style>
+        .profile-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin-top: 75px;
+        }
+
+        .profile-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .profile-header {
+            position: relative;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 4px solid #0066ff;
+        }
+
+        .profile-details {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .profile-details h3 {
+            margin-bottom: 10px;
+        }
+
+        .profile-details form input,
+        .profile-details form select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 14px;
+        }
+
+        .profile-details form button {
+            padding: 10px 20px;
+            margin-top: 15px;
+            background-color: #0066ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .profile-details form button:hover {
+            background-color: #0055cc;
+        }
+
+        .cancel-btn {
+            background-color: #ccc;
+            margin-left: 10px;
+        }
+
+        .cancel-btn:hover {
+            background-color: #bbb;
+        }
+    </style>
+</head>
+
+<body>
+    {% extends 'header.html' %}
+    {% block body %}
+    <div class="profile-container">
+        <div class="profile-card">
+            <div class="profile-details">
+                <h3>Edit Details</h3>
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <!-- Name -->
+                    <label for="fullName">Full Name:</label>
+                    <input type="text" id="fullName" name="fullName" value="{{ cuser.fnm }}" required>
+
+                    <!-- Email -->
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" value="{{ cuser.email }}" required>
+
+                    <!-- Date of Birth -->
+                    <label for="dob">Date of Birth:</label>
+                    <input type="date" id="dob" name="dob" value="{{ cuser.dob }}" required>
+
+                    <!-- Date of Join -->
+                    <label for="doj">Date of Join:</label>
+                    <input type="date" id="doj" name="doj" value="{{ cuser.doj }}" required>
+
+                    <!-- Dynamic Field Based on User Type -->
+                    {% if i.userType == "teacher" %}
+                    <label for="compensation">Compensation:</label>
+                    <input type="number" id="compensation" name="compensation" value="{{ cuser.compensation }}">
+                    {% elif i.userType == "student" %}
+                    <label for="rollNumber">Roll Number:</label>
+                    <input type="text" id="rollNumber" name="rollNumber" value="{{ cuser.rollNumber }}">
+                    {% endif %}
+
+                    <!-- Submit and Cancel Buttons -->
+                    <button type="submit">Save Changes</button>
+                    <a href="/Profile" class="cancel-btn" role="button">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+
+</html>

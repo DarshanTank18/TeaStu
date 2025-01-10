@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Routine</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #0066ff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        /* Navigation Tabs */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            background-color: #0066ff;
+            padding: 10px 0;
+        }
+
+        .tab {
+            margin: 0 15px;
+            padding: 10px 20px;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            background-color: #3094ff;
+            transition: background-color 0.3s;
+        }
+
+        .tab:hover {
+            background-color: #003d73;
+        }
+
+        .tab.active {
+            background-color: #003d73;
+        }
+
+        /* Routine Table */
+        main {
+            flex: 1; /* Allow main content to expand */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .routine-container {
+            display: none;
+            padding: 20px;
+            justify-content: center;
+        }
+
+        .routine-container.active {
+            display: flex;
+        }
+
+        table {
+            width: 90%;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        thead {
+            background-color: #0056b3;
+            color: white;
+        }
+
+        thead th {
+            padding: 15px;
+            text-align: center;
+        }
+
+        tbody td,
+        thead th {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tbody tr:hover {
+            background-color: #e0e0ff;
+        }
+
+        td {
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    {% extends 'header.html' %}
+    {% block body %}
+    <header>
+        <h1>College Routine</h1>
+    </header>
+
+    <!-- Tabs for Programs -->
+    <nav class="tabs">
+        <div class="tab active" onclick="showRoutine('bca')">BCA</div>
+        <div class="tab" onclick="showRoutine('bba')">BBA</div>
+        <div class="tab" onclick="showRoutine('mba')">MBA</div>
+        <div class="tab" onclick="showRoutine('agriculture')">Agriculture</div>
+    </nav>
+
+    <!-- Routine Containers -->
+    <main>
+        <!-- BCA Routine -->
+        <section id="bca" class="routine-container active">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Monday</th>
+                        <th>Tuesday</th>
+                        <th>Wednesday</th>
+                        <th>Thursday</th>
+                        <th>Friday</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>9:00 AM - 10:00 AM</td>
+                        <td>Mathematics</td>
+                        <td>Programming</td>
+                        <td>Physics</td>
+                        <td>Chemistry</td>
+                        <td>Lab</td>
+                    </tr>
+                    <tr>
+                        <td>10:15 AM - 11:15 AM</td>
+                        <td>Programming</td>
+                        <td>Mathematics</td>
+                        <td>Lab</td>
+                        <td>Physics</td>
+                        <td>English</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- BBA Routine -->
+        <section id="bba" class="routine-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Monday</th>
+                        <th>Tuesday</th>
+                        <th>Wednesday</th>
+                        <th>Thursday</th>
+                        <th>Friday</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>9:00 AM - 10:00 AM</td>
+                        <td>Marketing</td>
+                        <td>Finance</td>
+                        <td>Economics</td>
+                        <td>HRM</td>
+                        <td>Business Law</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- MBA Routine -->
+        <section id="mba" class="routine-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Monday</th>
+                        <th>Tuesday</th>
+                        <th>Wednesday</th>
+                        <th>Thursday</th>
+                        <th>Friday</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>10:00 AM - 11:30 AM</td>
+                        <td>Operations</td>
+                        <td>Marketing</td>
+                        <td>Finance</td>
+                        <td>Case Study</td>
+                        <td>HRM</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Agriculture Routine -->
+        <section id="agriculture" class="routine-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Monday</th>
+                        <th>Tuesday</th>
+                        <th>Wednesday</th>
+                        <th>Thursday</th>
+                        <th>Friday</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>9:30 AM - 10:30 AM</td>
+                        <td>Soil Science</td>
+                        <td>Plant Biology</td>
+                        <td>Agriculture Tools</td>
+                        <td>Botany</td>
+                        <td>Lab</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Your College Name. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function showRoutine(id) {
+            const routines = document.querySelectorAll('.routine-container');
+            const tabs = document.querySelectorAll('.tab');
+
+            // Hide all routines
+            routines.forEach((routine) => routine.classList.remove('active'));
+
+            // Deactivate all tabs
+            tabs.forEach((tab) => tab.classList.remove('active'));
+
+            // Show selected routine and activate tab
+            document.getElementById(id).classList.add('active');
+            document.querySelector(`.tab[onclick="showRoutine('${id}')"]`).classList.add('active');
+        }
+    </script>
+    {% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeaStu</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .alert {
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.422);
+            color: white;
+        }
+
+        .closebtn {
+            margin-left: 15px;
+            color: white;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .closebtn:hover {
+            color: black;
+        }
+
+        /* msg */
+        .alert {
+            padding: 20px;
+            background-color: #f44336;
+            /* Red */
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        /* The close button */
+        .closebtn {
+            margin-left: 15px;
+            color: white;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        /* When moving the mouse over the close button */
+        .closebtn:hover {
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    {% extends 'header.html' %}
+    {% block body %}
+    <!-- Add Teacher Form -->
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card p-4">
+                    <h2 class="text-center mb-4 text-custom">Add Teacher</h2>
+                    <form method="post">
+                        {% csrf_token %}
+                        <!-- Flash Message -->
+                        {% if msg %}
+                        <div class="alert">
+                            <span class="closebtn" onclick="this.parentElement.style.display='none';">×</span>
+                            {{msg}}
+                        </div>
+                        {% endif %}
+                        <!-- Form Fields -->
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Teacher Name</label>
+                            <input type="text" class="form-control" id="name" name="T_name"
+                                placeholder="Enter full name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Teacher Email Address</label>
+                            <input type="email" class="form-control" id="email" name="T_mail" placeholder="Enter email"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">Subject Taught</label>
+                            <input type="text" class="form-control" id="subject" name="T_subject"
+                                placeholder="Enter subject" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" id="phone" name="T_number"
+                                placeholder="Enter phone number" required>
+                        </div>
+                        <button type="submit" class="btn btn-custom w-100">Add Teacher</button>
+                        <div class="text-center mt-3">
+                            <p><a href="/teachers" class="text-custom">Back to Staff List</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
