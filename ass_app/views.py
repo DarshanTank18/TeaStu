@@ -152,12 +152,12 @@ def emailverify(request):
         if person:
             request.session['cpmail'] = cpmail
             print("Email verified")
-            # # Email
-            # sub="Forgot Password"
-            # msg=f"Hello {person.fnm} !\n\nYou recently requested to reset your password for your TeaStu account. Click the link below to reset it.\n\nhttp://127.0.0.1:8000/resetpass/\nIf you didn’t request this, you can safely ignore this email. Your password won’t change unless you access the link above and create a new one.\nThis link will expire in 24 hours.\nThanks,\nThe TeaStu Team\n+91 12345 67890 | teastu@gmail.com"
-            # from_ID=settings.EMAIL_HOST_USER
-            # to_ID=[request.POST['email']]
-            # send_mail(subject=sub, message=msg, from_email=from_ID, recipient_list=to_ID)
+            # Email
+            sub="Forgot Password"
+            msg=f"Hello {person.fnm} !\n\nYou recently requested to reset your password for your TeaStu account. Click the link below to reset it.\n\nhttp://127.0.0.1:8000/resetpass/\nIf you didn’t request this, you can safely ignore this email. Your password won’t change unless you access the link above and create a new one.\nThis link will expire in 24 hours.\nThanks,\nThe TeaStu Team\n+91 12345 67890 | teastu@gmail.com"
+            from_ID=settings.EMAIL_HOST_USER
+            to_ID=[request.POST['email']]
+            send_mail(subject=sub, message=msg, from_email=from_ID, recipient_list=to_ID)
             return redirect('change_pass')
         else :
             print("Email dose not matched")
@@ -199,7 +199,7 @@ def event(request):
     msg = ""
     user = request.session.get('cuser')
     if request.method == 'POST':
-        eventreq = event_form(request.POST, request.FILES)
+        eventreq = event_form(request.POST, request.FILES,instance=user)
         if eventreq.is_valid():
             eventreq.save()
             msg = "Event uploaded"
