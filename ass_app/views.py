@@ -199,7 +199,7 @@ def event(request):
     msg = ""
     user = request.session.get('cuser')
     if request.method == 'POST':
-        eventreq = event_form(request.POST, request.FILES,instance=user)
+        eventreq = event_form(request.POST, request.FILES)
         if eventreq.is_valid():
             eventreq.save()
             msg = "Event uploaded"
